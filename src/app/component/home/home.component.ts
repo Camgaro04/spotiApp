@@ -12,12 +12,14 @@ export class HomeComponent implements OnInit {
   newSongs:any[] = [];
   isLoading: boolean;
 
-  constructor(private sportifyService: SpotifyService) { 
+  constructor(private spotifyService: SpotifyService) { 
     this.isLoading = true;
 
-      this.sportifyService.getNewReleases().subscribe((data:any)=>{
+      this.spotifyService.getNewReleases().subscribe((data:any)=>{
         this.newSongs = data;
         this.isLoading = false;
+      }, (error)=>{
+        console.log(error);
       });
   }
 
